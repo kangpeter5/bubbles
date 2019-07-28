@@ -10,15 +10,11 @@ export default function Bubbles() {
     let motionResistance = 3; // Recommended between 1 and 10
 
     // Create layers
-    /*const layer3 = `
-        <div class="layer layer3"></div>
-    `;
-    const layer4 = `
-        <div class="layer layer4"></div>
-    `;
-    document.body.innerHTML = layer3;
-    document.body.innerHTML = layer4;*/
-
+    const layer3 = document.createElement('div')
+    layer3.classList.add('layer','layer-3')
+    const layer4 = document.createElement('div')
+    layer4.classList.add('layer','layer4')
+    
     // Create bubbles
     const mdBubbles = bubbliness * 3;
     const lgBubbles = bubbliness * 2;
@@ -27,16 +23,17 @@ export default function Bubbles() {
     for (let i = 0; i < mdBubbles; i++) {
         let topPos = (Math.random() * 100) + '%'
         let leftPos = (Math.random() * 100) + '%'
-        let bubbleMd = `
-            <div class="bubble bubble-md"></div>
-        `;
-        let layer = document.getElementsByClassName('layer3')
+        let bubbleMd = document.createElement('div')
 
-        console.log(`bubbleMd: ${typeof bubbleMd}`);
+        bubbleMd.classList.add('bubble','bubble-md')
+        bubbleMd.style = `top: ${topPos}; left: ${leftPos}`
+    
+        let layer = document.getElementsByClassName('layer3')[0]
 
-        layer.appendChild(bubbleMd).setAttribute(
-            'style',`top: ${topPos}; left: ${leftPos};`
-        );
+        console.log(`bubbleMd: ${bubbleMd}`);
+        console.log(`layer3: ${layer}`);
+
+        layer.appendChild(bubbleMd)
     }
     // Fill layer 4
     for (let i = 0; i < lgBubbles; i++) {
@@ -46,7 +43,7 @@ export default function Bubbles() {
             <div class="bubble bubble-lg"></div>
         `;
 
-        document.getElementsByClassName('layer4').innerHTML(bubbleLg).setAttribute(
+        document.getElementsByClassName('layer4').appendChild(bubbleLg).setAttribute(
             'style', `top: ${topPos}; left: ${leftPos};`
         );
     }
@@ -114,11 +111,4 @@ export default function Bubbles() {
             }, 500);
         });
     }
-
-    return (
-        <>
-            <div class="layer layer3"></div>
-            <div class="layer layer4"></div>
-        </>
-    )
 }
