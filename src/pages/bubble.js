@@ -7,9 +7,9 @@ import Bubbles from "../components/bubbles"
 
 const SecondPage = () => (
   <Layout>
-    <SEO title="Page two" />
+    <SEO title="Bubble" />
     <Bubbles />
-    <Link to="/">Go back to the homepage</Link>
+    <Link to="/">Home</Link>
   </Layout>
 )
 

@@ -10,14 +10,14 @@ export default function Bubbles() {
     let motionResistance = 3; // Recommended between 1 and 10
 
     // Create layers
-    let layer3 = `
+    /*const layer3 = `
         <div class="layer layer3"></div>
     `;
-    let layer4 = `
+    const layer4 = `
         <div class="layer layer4"></div>
     `;
-    document.body.appendChild(layer3)
-    document.body.appendChild(layer4)
+    document.body.innerHTML = layer3;
+    document.body.innerHTML = layer4;*/
 
     // Create bubbles
     const mdBubbles = bubbliness * 3;
@@ -27,23 +27,26 @@ export default function Bubbles() {
     for (let i = 0; i < mdBubbles; i++) {
         let topPos = (Math.random() * 100) + '%'
         let leftPos = (Math.random() * 100) + '%'
-        let layer3 = `
+        let bubbleMd = `
             <div class="bubble bubble-md"></div>
         `;
+        let layer = document.getElementsByClassName('layer3')
 
-        document.getElementsByClassName('layer3').appendChild(layer3).setAttribute(
+        console.log(`bubbleMd: ${typeof bubbleMd}`);
+
+        layer.appendChild(bubbleMd).setAttribute(
             'style',`top: ${topPos}; left: ${leftPos};`
-            );
+        );
     }
     // Fill layer 4
     for (let i = 0; i < lgBubbles; i++) {
         let topPos = (Math.random() * 100) + '%';
         let leftPos = (Math.random() * 100) + '%';
-        let layer4 = `
+        let bubbleLg = `
             <div class="bubble bubble-lg"></div>
         `;
 
-        document.getElementsByClassName('layer4').appendChild(layer4).setAttribute(
+        document.getElementsByClassName('layer4').innerHTML(bubbleLg).setAttribute(
             'style', `top: ${topPos}; left: ${leftPos};`
         );
     }
@@ -111,4 +114,11 @@ export default function Bubbles() {
             }, 500);
         });
     }
+
+    return (
+        <>
+            <div class="layer layer3"></div>
+            <div class="layer layer4"></div>
+        </>
+    )
 }
