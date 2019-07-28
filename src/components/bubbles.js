@@ -13,6 +13,7 @@ export default function Bubbles() {
     let layer3 = document.createElement('div')
     layer3.classList.add('layer','layer3')
     document.body.appendChild(layer3);
+
     let layer4 = document.createElement('div')
     layer4.classList.add('layer','layer4')
     document.body.appendChild(layer4);
@@ -82,30 +83,30 @@ export default function Bubbles() {
 
 
     // Pop function
+    let bubbleDiv = document.getElementsByClassName('bubble')
+
     if (windowWidth > 1024) { // Desktop
 
-        document.getElementsByClassName('bubble').addEventListener("mouseover", (e) => {
+        bubbleDiv.addEventListener("mouseover", (e) => {
 
             if (this.classList.contains('bubble-wobble')) {
-                let thisBubble = e;
                 e.target.classList.add('bubble-pop');
 
                 setTimeout(() => {
-                    thisBubble.hidden = true;
+                    e.target.hidden = true;
                 }, 500);
             } else {
-                this.classList.add('bubble-wobble');
+                e.target.classList.add('bubble-wobble');
             }
         });
 
     } else { // Mobile
 
-        document.getElementsByClassName('bubble').addEventListener("click", () => {
-            let thisBubble = this;
+        bubbleDiv.addEventListener("click", (e) => {
 
-            thisBubble.classList.add('bubble-pop');
+            e.target.classList.add('bubble-pop');
             setTimeout(function () {
-                thisBubble.hidden = true;
+                e.target.hidden = true;
             }, 500);
         });
     }
