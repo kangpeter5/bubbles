@@ -10,11 +10,13 @@ export default function Bubbles() {
     let motionResistance = 3; // Recommended between 1 and 10
 
     // Create layers
-    const layer3 = document.createElement('div')
-    layer3.classList.add('layer','layer-3')
-    const layer4 = document.createElement('div')
+    let layer3 = document.createElement('div')
+    layer3.classList.add('layer','layer3')
+    document.body.appendChild(layer3);
+    let layer4 = document.createElement('div')
     layer4.classList.add('layer','layer4')
-    
+    document.body.appendChild(layer4);
+
     // Create bubbles
     const mdBubbles = bubbliness * 3;
     const lgBubbles = bubbliness * 2;
@@ -29,23 +31,19 @@ export default function Bubbles() {
         bubbleMd.style = `top: ${topPos}; left: ${leftPos}`
     
         let layer = document.getElementsByClassName('layer3')[0]
-
-        console.log(`bubbleMd: ${bubbleMd}`);
-        console.log(`layer3: ${layer}`);
-
         layer.appendChild(bubbleMd)
     }
     // Fill layer 4
     for (let i = 0; i < lgBubbles; i++) {
         let topPos = (Math.random() * 100) + '%';
         let leftPos = (Math.random() * 100) + '%';
-        let bubbleLg = `
-            <div class="bubble bubble-lg"></div>
-        `;
+        let bubbleLg = document.createElement('div')
 
-        document.getElementsByClassName('layer4').appendChild(bubbleLg).setAttribute(
-            'style', `top: ${topPos}; left: ${leftPos};`
-        );
+        bubbleLg.classList.add('bubble','bubble-lg')
+        bubbleLg.style = `top: ${topPos}; left: ${leftPos}`
+    
+        let layer = document.getElementsByClassName('layer4')[0]
+        layer.appendChild(bubbleLg)
     }
 
     motionResistance = motionResistance *= -1; // Reverse direction
@@ -56,15 +54,15 @@ export default function Bubbles() {
 
     if (windowWidth > 1024) {
 
-        window.mousemove(function (event) {
+        window.addEventListener('mousemove', (e) => {
 
             // Get centre of layer
             let centerX = window.innerWidth / 2;
             let centerY = window.innerWidth / 2;
 
             // Get mouse coordinates
-            let mouseX = event.clientX
-            let mouseY = event.clientY
+            let mouseX = e.clientX
+            let mouseY = e.clientY
 
             let layer3X = (mouseX - centerX) / (motionResistance / 0.5)
             let layer3Y = (mouseY - centerY) / (motionResistance / 0.5)
@@ -86,11 +84,11 @@ export default function Bubbles() {
     // Pop function
     if (windowWidth > 1024) { // Desktop
 
-        document.getElementsByClassName('bubble').mouseover(function () {
+        document.getElementsByClassName('bubble').addEventListener("mouseover", (e) => {
 
             if (this.classList.contains('bubble-wobble')) {
-                let thisBubble = this;
-                thisBubble.classList.add('bubble-pop');
+                let thisBubble = e;
+                e.target.classList.add('bubble-pop');
 
                 setTimeout(() => {
                     thisBubble.hidden = true;
@@ -102,7 +100,7 @@ export default function Bubbles() {
 
     } else { // Mobile
 
-        document.getElementsByClassName('bubble').click(function () {
+        document.getElementsByClassName('bubble').addEventListener("click", () => {
             let thisBubble = this;
 
             thisBubble.classList.add('bubble-pop');
