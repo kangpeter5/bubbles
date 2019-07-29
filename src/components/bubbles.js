@@ -29,8 +29,15 @@ export default function Bubbles() {
         let bubbleMd = document.createElement('div')
 
         bubbleMd.classList.add('bubble','bubble-md')
-        bubbleMd.style = `top: ${topPos}; left: ${leftPos}`
-    
+        bubbleMd.style = `top: ${topPos}; left: ${leftPos}`;
+
+        bubbleMd.addEventListener("click", (e) => {
+
+            e.target.classList.add('bubble-pop');
+            setTimeout(function () {
+                e.target.hidden = true;
+            }, 500);
+        });
         let layer = document.getElementsByClassName('layer3')[0]
         layer.appendChild(bubbleMd)
     }
@@ -41,8 +48,16 @@ export default function Bubbles() {
         let bubbleLg = document.createElement('div')
 
         bubbleLg.classList.add('bubble','bubble-lg')
-        bubbleLg.style = `top: ${topPos}; left: ${leftPos}`
+        bubbleLg.style = `top: ${topPos}; left: ${leftPos}`;
     
+        bubbleLg.addEventListener("click", (e) => {
+
+            e.target.classList.add('bubble-pop');
+            setTimeout(function () {
+                e.target.hidden = true;
+            }, 500);
+        });
+
         let layer = document.getElementsByClassName('layer4')[0]
         layer.appendChild(bubbleLg)
     }
@@ -71,23 +86,25 @@ export default function Bubbles() {
             let layer4X = (mouseX - centerX) / (motionResistance / 0.75)
             let layer4Y = (mouseY - centerY) / (motionResistance / 0.75)
 
-            document.getElementsByClassName('layer3').setAttribute(
-                'style', `top: ${layer3Y}; left: ${layer3X};`
-            );
-            document.getElementsByClassName('layer4').setAttribute(
-                'style', `top: ${layer4Y}; left: ${layer4X};`
-            );
+            document.body.getElementsByClassName('layer3').style = `top: ${layer3Y}; left: ${layer3X};`;
+            document.body.getElementsByClassName('layer4').style = `top: ${layer4Y}; left: ${layer4X};`;
         });
 
     } // end if
 
+    return (
+        <>
+            <div className="layer layer3"></div>
+            <div className="layer layer4"></div>
+        </>
+    );
 
     // Pop function
-    let bubbleDiv = document.getElementsByClassName('bubble')
+    //let bubbleDiv = document.body.getElementsByClassName('bubble')
 
-    if (windowWidth > 1024) { // Desktop
+    /*if (windowWidth > 1024) { // Desktop
 
-        bubbleDiv.addEventListener("mouseover", (e) => {
+        document.body.getElementsByClassName('bubble').addEventListener("mouseover", (e) => {
 
             if (this.classList.contains('bubble-wobble')) {
                 e.target.classList.add('bubble-pop');
@@ -102,12 +119,12 @@ export default function Bubbles() {
 
     } else { // Mobile
 
-        bubbleDiv.addEventListener("click", (e) => {
+        document.body.getElementsByClassName('bubble').addEventListener("click", (e) => {
 
             e.target.classList.add('bubble-pop');
             setTimeout(function () {
                 e.target.hidden = true;
             }, 500);
         });
-    }
+    }*/
 }
