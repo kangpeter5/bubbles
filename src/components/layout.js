@@ -35,11 +35,16 @@ const Layout = ({ children }) => {
             bottom: 50,
             left: `50%`,
             transform: `translate(-50%,0)`,
+            color: `#fff`,
           }}
         >
           © {new Date().getFullYear()}, Built with
           {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <a href="https://www.gatsbyjs.org" 
+            style={{
+              textDecoration: `none`,
+              color: `#fff`,
+            }}>Gatsby</a>
         </footer>
       </div>
     </>

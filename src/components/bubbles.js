@@ -100,13 +100,11 @@ export default function Bubbles() {
     );
 
     // Pop function
-    //let bubbleDiv = document.body.getElementsByClassName('bubble')
-
-    /*if (windowWidth > 1024) { // Desktop
+    if (windowWidth > 1024) { // Desktop
 
         document.body.getElementsByClassName('bubble').addEventListener("mouseover", (e) => {
 
-            if (this.classList.contains('bubble-wobble')) {
+            if (e.classList.contains('bubble-wobble')) {
                 e.target.classList.add('bubble-pop');
 
                 setTimeout(() => {
@@ -126,5 +124,5 @@ export default function Bubbles() {
                 e.target.hidden = true;
             }, 500);
         });
-    }*/
+    }
 }
