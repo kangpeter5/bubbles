@@ -6,7 +6,7 @@ import "./bubbles.css"
 export default function Bubbles() {
 
     // CONTROLS
-    const bubbliness = 8; // Recommended between 1 and 10
+    const bubbliness = 4; // Recommended between 1 and 10
     let motionResistance = 3; // Recommended between 1 and 10
 
     // Create layers
@@ -28,7 +28,7 @@ export default function Bubbles() {
         let leftPos = (Math.random() * 100) + '%'
         let bubbleMd = document.createElement('div')
 
-        bubbleMd.classList.add('bubble','bubble-md')
+        bubbleMd.classList.add('bubble','bubble-wobble','bubble-md')
         bubbleMd.style = `top: ${topPos}; left: ${leftPos}`;
 
         bubbleMd.addEventListener("click", (e) => {
@@ -47,7 +47,7 @@ export default function Bubbles() {
         let leftPos = (Math.random() * 100) + '%';
         let bubbleLg = document.createElement('div')
 
-        bubbleLg.classList.add('bubble','bubble-lg')
+        bubbleLg.classList.add('bubble','bubble-wobble','bubble-lg')
         bubbleLg.style = `top: ${topPos}; left: ${leftPos}`;
     
         bubbleLg.addEventListener("click", (e) => {
@@ -68,7 +68,7 @@ export default function Bubbles() {
     // body size is not the same as window size, which is the desired width
     let windowWidth = window.innerWidth || document.body.clientWidth
 
-    if (windowWidth > 1024) {
+    //if (windowWidth > 1024) {
 
         window.addEventListener('mousemove', (e) => {
 
@@ -91,20 +91,24 @@ export default function Bubbles() {
         });
 
         //Pop function
-        /*document.body.getElementsByClassName('bubble').addEventListener("mouseover", (e) => {
+        let bubbleArr = document.querySelectorAll('bubble')
 
-            if (e.classList.contains('bubble-wobble')) {
-                e.target.classList.add('bubble-pop');
+        bubbleArr.forEach( (e) => {
+            e.addEventListener("mouseover", () => {
+                console.log(e);
+                if (e.classList.contains('bubble-wobble')) {
+                    e.target.classList.add('bubble-pop');
+    
+                    setTimeout(() => {
+                        e.target.hidden = true;
+                    }, 500);
+                } else {
+                    e.target.classList.add('bubble-wobble');
+                }
+            });
+        });
 
-                setTimeout(() => {
-                    e.target.hidden = true;
-                }, 500);
-            } else {
-                e.target.classList.add('bubble-wobble');
-            }
-        });*/
-
-    } 
+    //} 
     // end if
 
     return (

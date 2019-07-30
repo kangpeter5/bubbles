@@ -62,15 +62,15 @@ body {
 }
 
 .bubble-md {
-    width: 70px;
-    height: 70px;
+    width: 150px;
+    height: 150px;
     margin-top: -35px;
     margin-left: -35px;
 }
 
 .bubble-lg {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     margin-top: -50px;
     margin-left: -50px;
 }
