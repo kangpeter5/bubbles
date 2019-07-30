@@ -90,19 +90,8 @@ export default function Bubbles() {
             document.body.getElementsByClassName('layer4').style = `top: ${layer4Y}; left: ${layer4X};`;
         });
 
-    } // end if
-
-    return (
-        <>
-            <div className="layer layer3"></div>
-            <div className="layer layer4"></div>
-        </>
-    );
-
-    // Pop function
-    if (windowWidth > 1024) { // Desktop
-
-        document.body.getElementsByClassName('bubble').addEventListener("mouseover", (e) => {
+        //Pop function
+        /*document.body.getElementsByClassName('bubble').addEventListener("mouseover", (e) => {
 
             if (e.classList.contains('bubble-wobble')) {
                 e.target.classList.add('bubble-pop');
@@ -113,16 +102,15 @@ export default function Bubbles() {
             } else {
                 e.target.classList.add('bubble-wobble');
             }
-        });
+        });*/
 
-    } else { // Mobile
+    } 
+    // end if
 
-        document.body.getElementsByClassName('bubble').addEventListener("click", (e) => {
-
-            e.target.classList.add('bubble-pop');
-            setTimeout(function () {
-                e.target.hidden = true;
-            }, 500);
-        });
-    }
+    return (
+        <>
+            <div className="layer layer3"></div>
+            <div className="layer layer4"></div>
+        </>
+    );
 }
