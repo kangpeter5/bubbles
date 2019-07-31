@@ -8,7 +8,12 @@ import Bubbles from "../components/bubbles"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <Bubbles />
+    <Bubbles>
+      <main>
+        <div className="layer layer3"></div>
+        <div className="layer layer4"></div>
+      </main>
+    </Bubbles>
   </Layout>
 )
 

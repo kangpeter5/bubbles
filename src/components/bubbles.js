@@ -7,7 +7,7 @@ export default function Bubbles() {
 
     // CONTROLS
     const bubbliness = 4; // Recommended between 1 and 10
-    let motionResistance = 3; // Recommended between 1 and 10
+    let motionResistance = 10; // Recommended between 1 and 10
 
     // Create layers
     let layer3 = document.createElement('div')
@@ -29,7 +29,7 @@ export default function Bubbles() {
         let bubbleMd = document.createElement('div')
 
         bubbleMd.classList.add('bubble','bubble-wobble','bubble-md')
-        bubbleMd.style = `top: ${topPos}; left: ${leftPos}`;
+        bubbleMd.style = `top: ${topPos}; left: ${leftPos};`;
 
         bubbleMd.addEventListener("click", (e) => {
 
@@ -48,7 +48,7 @@ export default function Bubbles() {
         let bubbleLg = document.createElement('div')
 
         bubbleLg.classList.add('bubble','bubble-wobble','bubble-lg')
-        bubbleLg.style = `top: ${topPos}; left: ${leftPos}`;
+        bubbleLg.style = `top: ${topPos}; left: ${leftPos};`;
     
         bubbleLg.addEventListener("click", (e) => {
 
@@ -86,8 +86,8 @@ export default function Bubbles() {
             let layer4X = (mouseX - centerX) / (motionResistance / 0.75)
             let layer4Y = (mouseY - centerY) / (motionResistance / 0.75)
 
-            document.body.getElementsByClassName('layer3').style = `top: ${layer3Y}; left: ${layer3X};`;
-            document.body.getElementsByClassName('layer4').style = `top: ${layer4Y}; left: ${layer4X};`;
+            document.getElementsByClassName('layer3')[0].style = `top: ${layer3Y}%; left: ${layer3X}%;`;
+            document.getElementsByClassName('layer4')[0].style = `top: ${layer4Y}%; left: ${layer4X}%;`;
         });
 
         //Pop function
@@ -113,8 +113,6 @@ export default function Bubbles() {
 
     return (
         <>
-            <div className="layer layer3"></div>
-            <div className="layer layer4"></div>
         </>
     );
 }
