@@ -86,8 +86,8 @@ export default function Bubbles() {
             let layer4X = (mouseX - centerX) / (motionResistance / 0.75)
             let layer4Y = (mouseY - centerY) / (motionResistance / 0.75)
 
-            document.getElementsByClassName('layer3')[0].style = `top: ${layer3Y}%; left: ${layer3X}%;`;
-            document.getElementsByClassName('layer4')[0].style = `top: ${layer4Y}%; left: ${layer4X}%;`;
+            document.getElementsByClassName('layer3')[0].style = `top: ${layer3Y - 10}%; left: ${layer3X}%;`;
+            document.getElementsByClassName('layer4')[0].style = `top: ${layer4Y - 10}%; left: ${layer4X}%;`;
         });
 
         //Pop function
