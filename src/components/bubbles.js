@@ -109,7 +109,6 @@ export default function Bubbles() {
         });
 
     //} 
-    // end if
 
     return (
         <>
